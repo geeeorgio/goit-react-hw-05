@@ -25,6 +25,7 @@ const SearchForm = ({ onSubmit }) => {
     <form className={s.form} onSubmit={handleSubmit}>
       <input
         className={s.input}
+        placeholder="Search for a movie"
         type="text"
         name="query"
         value={query}

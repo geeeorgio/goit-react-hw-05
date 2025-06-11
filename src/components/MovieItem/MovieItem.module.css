@@ -1,0 +1,31 @@
+.title {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    text-align: center;
+    margin: 0;
+    padding: var(--spacing-sm);
+    transition: color var(--transition-normal);
+}
+
+.title:hover {
+    color: var(--color-primary);
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 1rem;
+        padding: var(--spacing-xs);
+    }
+}
+
+@media (max-width: 375px) {
+    .title {
+        font-size: 0.9rem;
+    }
+}

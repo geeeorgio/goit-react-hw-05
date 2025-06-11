@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMovieById } from "../../service/tmdbAPI";
 import Container from "../../components/Container/Container";
-import MovieDetailsInfo from "../../components/MovieDetailesInfo/MovieDetailsInfo";
+import MovieDetailsInfo from "../../components/MovieDetailsInfo/MovieDetailsInfo";
 import BackLink from "../../components/BackLink/BackLink";
 
 const MovieDetailsPage = () => {

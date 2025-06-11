@@ -1,70 +1,89 @@
 .link {
-    display: inline-block;
-    padding: 8px 16px;
-    color: #333;
-    font-size: 18px;
+    position: relative;
+    color: var(--color-text);
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+    font-size: 1.1rem;
 
     &:hover {
-        color: #2196f3;
+        color: var(--color-primary);
+        background-color: var(--color-bg-dark);
     }
 
-    &::after {
+    &.active {
+        color: var(--color-primary);
+    }
+
+    &.active::after {
         content: '';
         position: absolute;
         bottom: -2px;
-        left: 50%;
-        width: 0;
+        left: 0;
+        width: 100%;
         height: 2px;
-        background-color: #2196f3;
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
+        background-color: var(--color-primary);
+        border-radius: var(--radius-sm);
     }
 
     &:hover::after {
-        width: 100%;
-    }
-}
-
-.active {
-    color: #2196f3;
-
-    &::after {
-        width: 100%;
-        background-color: #2196f3;
+        transform: scaleX(1);
+        opacity: 1;
     }
 }
 
 .nav {
-    padding: 20px 0;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-light);
+    box-shadow: var(--shadow-sm);
 }
 
 .list {
     display: flex;
-    gap: 30px;
+    gap: var(--spacing-xl);
     justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--spacing-md);
 }
 
 .item {
     position: relative;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .list {
-        flex-direction: column;
-        gap: 15px;
+        gap: var(--spacing-lg);
     }
 
     .link {
-        font-size: 16px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .list {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .link {
+        font-size: 0.95rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+}
+
+@media (max-width: 375px) {
+    .list {
+        gap: var(--spacing-sm);
+    }
+
+    .link {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs);
     }
 }

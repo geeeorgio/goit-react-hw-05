@@ -1,1 +1,7 @@
-.title {}
+.title {
+    font-size: 2rem;
+    color: var(--color-text);
+    text-align: center;
+    margin: 0;
+    padding: var(--spacing-md);
+}

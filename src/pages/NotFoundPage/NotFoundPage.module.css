@@ -1,82 +1,150 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 80px);
-    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    background: linear-gradient(to bottom, #000000, #1a1a2e);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: twinkle 333ms ease-in-out infinite;
+}
+
+.notfound {
+    position: relative;
+    width: 100%;
     text-align: center;
-    background-color: #f8f9fa;
+    z-index: 1;
+}
+
+.notfound404 {
+    height: 333px;
+    position: relative;
 }
 
 .title {
-    font-size: 120px;
-    font-weight: 700;
-    color: #2196f3;
+    font-size: 230px;
     margin: 0;
-    line-height: 1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    animation: bounce 2s ease infinite;
+    font-weight: 900;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, var(--color-primary), var(--color-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 .subtitle {
-    font-size: 24px;
-    color: #333;
-    margin: 20px 0;
-    font-weight: 500;
+    color: var(--color-text-lighter);
+    padding: var(--spacing-md);
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .text {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 30px;
+    color: var(--color-text-lighter);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: var(--spacing-xl);
+    margin-top: 0;
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .link {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #2196f3;
-    color: white;
+    font-size: 1rem;
     text-decoration: none;
-    border-radius: 25px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+    text-transform: uppercase;
+    background: var(--color-primary);
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: 40px;
+    color: var(--color-bg-light);
+    font-weight: 700;
+    box-shadow: 0 4px 15px -5px var(--color-primary);
+    transition: all var(--transition-normal);
 
     &:hover {
-        background-color: #1976d2;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px -5px var(--color-primary-dark);
     }
 
     &:active {
         transform: translateY(0);
+        box-shadow: 0 4px 15px -5px var(--color-primary);
     }
 }
 
-@keyframes bounce {
+@keyframes twinkle {
 
     0%,
     100% {
-        transform: translateY(0);
+        opacity: 0.8;
     }
 
     50% {
-        transform: translateY(-20px);
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 180px;
+    }
+
+    .subtitle {
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 768px) {
     .title {
-        font-size: 80px;
+        font-size: 140px;
     }
 
     .subtitle {
-        font-size: 20px;
+        font-size: 1.5rem;
     }
 
     .text {
-        font-size: 16px;
+        font-size: 1rem;
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (max-width: 375px) {
+    .title {
+        font-size: 100px;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .text {
+        font-size: 0.9rem;
+    }
+
+    .link {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
 }

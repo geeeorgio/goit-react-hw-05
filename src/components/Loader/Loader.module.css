@@ -2,4 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 200px;
+    padding: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        min-height: 150px;
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 375px) {
+    .wrapper {
+        min-height: 100px;
+        padding: var(--spacing-md);
+    }
 }
