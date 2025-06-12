@@ -3,8 +3,8 @@ import s from "./Loader.module.css";
 
 const Loader = () => {
   return (
-    <div className={s.wrapper}>
-      <BeatLoader color="#8d8787" size={25} />
+    <div className={s.backdrop}>
+      <BeatLoader color="#ffffff" size={36} />
     </div>
   );
 };

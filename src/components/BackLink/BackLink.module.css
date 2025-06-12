@@ -14,12 +14,6 @@
     transition: all var(--transition-normal);
     box-shadow: var(--shadow-sm);
 
-    &::before {
-        content: '←';
-        font-size: 1.2rem;
-        line-height: 1;
-    }
-
     &:hover {
         background-color: var(--color-primary-dark);
         transform: translateY(-1px);
@@ -30,6 +24,11 @@
         transform: translateY(0);
         box-shadow: var(--shadow-sm);
     }
+}
+
+.arrowIcon {
+    width: 16px;
+    height: 16px;
 }
 
 @media (max-width: 768px) {

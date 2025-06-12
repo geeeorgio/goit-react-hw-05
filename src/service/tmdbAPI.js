@@ -53,3 +53,37 @@ export const getMoviesByQuery = async (query) => {
 
   return results;
 };
+
+export const getMovieCast = async (movieId, page) => {
+  const { data } = await axios.get(
+    `${BASE_URL}/movie/${movieId}/credits?language=en-US`,
+    {
+      headers: {
+        Authorization: HEADER,
+      },
+      params: {
+        api_key: API_KEY,
+        page,
+      },
+    }
+  );
+
+  return data.cast;
+};
+
+export const getMovieReviews = async (movieId, page) => {
+  const { data } = await axios.get(
+    `${BASE_URL}/movie/${movieId}/reviews?language=en-US`,
+    {
+      headers: {
+        Authorization: HEADER,
+      },
+      params: {
+        api_key: API_KEY,
+        page,
+      },
+    }
+  );
+
+  return data.results;
+};

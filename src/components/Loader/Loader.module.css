@@ -1,21 +1,10 @@
-.wrapper {
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 200px;
-    padding: var(--spacing-xl);
-}
-
-@media (max-width: 768px) {
-    .wrapper {
-        min-height: 150px;
-        padding: var(--spacing-lg);
-    }
-}
-
-@media (max-width: 375px) {
-    .wrapper {
-        min-height: 100px;
-        padding: var(--spacing-md);
-    }
+    justify-content: center;
+    z-index: 9999;
 }

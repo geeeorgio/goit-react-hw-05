@@ -1,0 +1,120 @@
+.castContainer {
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.title {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.castList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.castItem {
+    transition: transform var(--transition-normal);
+}
+
+.castItem:hover {
+    transform: translateY(-5px);
+}
+
+.actorCard {
+    background-color: var(--color-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-normal);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.actorCard:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.actorImage {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.noImage {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background-color: var(--color-bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.actorInfo {
+    padding: var(--spacing-sm);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.actorName {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin: 0;
+    font-weight: 600;
+}
+
+.characterName {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.loading,
+.error,
+.noCast {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text);
+    font-size: 1.2rem;
+}
+
+.error {
+    color: var(--color-error);
+}
+
+@media (max-width: 768px) {
+    .castContainer {
+        padding: var(--spacing-md);
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .castList {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: var(--spacing-sm);
+    }
+
+    .actorName {
+        font-size: 1rem;
+    }
+
+    .characterName {
+        font-size: 0.8rem;
+    }
+}

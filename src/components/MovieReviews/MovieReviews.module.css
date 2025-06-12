@@ -1,0 +1,138 @@
+.reviewsContainer {
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.title {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.reviewsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.reviewItem {
+    transition: transform var(--transition-normal);
+}
+
+.reviewItem:hover {
+    transform: translateX(5px);
+}
+
+.reviewCard {
+    background-color: var(--color-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-normal);
+}
+
+.reviewCard:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-bg-dark);
+}
+
+.authorInfo {
+    flex-grow: 1;
+}
+
+.authorName {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-xs) 0;
+    font-weight: 600;
+}
+
+.reviewDate {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.rating {
+    background-color: var(--color-primary-light);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    margin-left: var(--spacing-md);
+}
+
+.ratingValue {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.reviewContent {
+    color: var(--color-text);
+}
+
+.reviewText {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.loading,
+.error,
+.noReviews {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text);
+    font-size: 1.2rem;
+}
+
+.error {
+    color: var(--color-error);
+}
+
+@media (max-width: 768px) {
+    .reviewsContainer {
+        padding: var(--spacing-md);
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .reviewCard {
+        padding: var(--spacing-sm);
+    }
+
+    .reviewHeader {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .rating {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+
+    .authorName {
+        font-size: 1.1rem;
+    }
+
+    .reviewText {
+        font-size: 0.9rem;
+    }
+}

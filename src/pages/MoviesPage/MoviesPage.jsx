@@ -6,6 +6,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import Loader from "../../components/Loader/Loader";
 import Notification from "../../components/Notification/Notification";
+import toast from "react-hot-toast";
 
 const MoviesPage = () => {
   const [query, setQuery] = useState("");
@@ -19,12 +20,17 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
-    if (!query.trim) return;
+    if (!query.trim()) return;
 
     const fetchMovies = async () => {
       try {
         setIsLoading(true);
         const moviesList = await getMoviesByQuery(query);
+        if (moviesList.length === 0) {
+          toast.error("No movies found for this query. Try something else.");
+          setMovies([]);
+          return;
+        }
         setMovies(moviesList);
       } catch (error) {
         setErrorMsg(error.message);

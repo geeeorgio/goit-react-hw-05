@@ -1,17 +1,17 @@
 import { Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import s from "./MovieDetailsInfo.module.css";
 
 const MovieDetailsInfo = ({
   movie: {
-    adult,
     budget,
     genres,
     homepage,
     imdb_id,
+    id,
     original_title,
     overview,
     poster_path,
-    production_companies,
     release_date,
     revenue,
     runtime,
@@ -48,18 +48,10 @@ const MovieDetailsInfo = ({
     return `${hours}h ${remainingMinutes}m`;
   };
 
-  const getRatingBadge = () => {
-    if (adult) {
-      return <div className={`${s.ratingBadge} ${s.adult}`}>18+</div>;
-    }
-    return <div className={`${s.ratingBadge} ${s.general}`}>G</div>;
-  };
-
   return (
     <div className={s.container}>
       <div className={s.posterWrapper}>
         <img src={posterUrl} alt={title} className={s.poster} loading="lazy" />
-        {getRatingBadge()}
       </div>
 
       <div className={s.content}>
@@ -114,6 +106,7 @@ const MovieDetailsInfo = ({
 
         {genres && genres.length > 0 && (
           <div className={s.genres}>
+            <span className={s.metaLabel}>Genres:</span>
             {genres.map((genre) => (
               <span key={genre.id} className={s.genre}>
                 {genre.name}
@@ -129,20 +122,10 @@ const MovieDetailsInfo = ({
           </div>
         )}
 
-        {production_companies && production_companies.length > 0 && (
-          <div className={s.companiesSection}>
-            <h2 className={s.sectionTitle}>Production Companies</h2>
-            <div className={s.companies}>
-              {production_companies.map((company) => (
-                <span key={company.id} className={s.company}>
-                  {company.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
         <div className={s.links}>
+          <span className={s.metaLabel}>
+            More information about this movie:
+          </span>
           {homepage && (
             <a
               href={homepage}
@@ -163,6 +146,15 @@ const MovieDetailsInfo = ({
               View on IMDB
             </a>
           )}
+        </div>
+
+        <div className={s.additionalInfo}>
+          <Link to={`/movies/${id}/cast`} className={s.additionalInfoLink}>
+            View Cast
+          </Link>
+          <Link to={`/movies/${id}/reviews`} className={s.additionalInfoLink}>
+            View Reviews
+          </Link>
         </div>
       </div>
     </div>
