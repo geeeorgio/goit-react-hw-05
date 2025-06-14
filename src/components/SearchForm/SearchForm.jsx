@@ -3,13 +3,12 @@ import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import s from "./SearchForm.module.css";
 
-const SearchForm = ({ onSubmit }) => {
+const SearchForm = () => {
   const [query, setQuery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
     setQuery(e.target.value);
-    setSearchParams({ query: query });
   };
 
   const handleSubmit = (e) => {
@@ -19,7 +18,7 @@ const SearchForm = ({ onSubmit }) => {
       return;
     }
 
-    onSubmit(query);
+    setSearchParams({ query: query });
 
     setQuery("");
   };

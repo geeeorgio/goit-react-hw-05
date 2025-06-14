@@ -10,18 +10,12 @@ import Loader from "../../components/Loader/Loader";
 import Notification from "../../components/Notification/Notification";
 
 const MoviesPage = () => {
-  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [err, setErr] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const handleSubmit = (q) => {
-    setQuery(q);
-    setSearchParams({ query: q });
-  };
 
   useEffect(() => {
     const query = searchParams.get("query");
@@ -51,7 +45,7 @@ const MoviesPage = () => {
   return (
     <Section>
       <Container>
-        <SearchForm onSubmit={handleSubmit} />
+        <SearchForm />
         {isLoading && <Loader />}
         {!err && !isLoading && movies.length > 0 && (
           <MovieList movies={movies} />
