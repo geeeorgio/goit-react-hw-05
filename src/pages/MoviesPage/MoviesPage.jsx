@@ -16,14 +16,16 @@ const MoviesPage = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const searchParams = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSubmit = (q) => {
     setQuery(q);
+    setSearchParams({ query: q });
   };
 
   useEffect(() => {
-    if (!query.trim()) return;
+    const query = searchParams.get("query");
+    if (!query) return;
 
     const fetchMovies = async () => {
       try {
@@ -44,7 +46,7 @@ const MoviesPage = () => {
     };
 
     fetchMovies();
-  }, [query]);
+  }, [searchParams]);
 
   return (
     <Section>
