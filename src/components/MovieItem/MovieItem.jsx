@@ -6,7 +6,7 @@ const MovieItem = ({ movie }) => {
   const location = useLocation();
 
   return (
-    <Link to={`/movies/${movie.id}`} state={location}>
+    <Link to={`/movies/${movie.id}`} state={location.pathname}>
       <GridItem>
         <p className={s.title}>{movie.title}</p>
       </GridItem>

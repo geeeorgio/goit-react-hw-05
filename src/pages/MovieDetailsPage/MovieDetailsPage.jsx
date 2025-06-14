@@ -13,9 +13,8 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const { movieId } = useParams();
 
-  const ref = useRef();
-
   const location = useLocation();
+  const ref = useRef(location.state);
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -34,9 +33,9 @@ const MovieDetailsPage = () => {
 
   return (
     <Container>
-      <BackLink to={location.state || "/"} />
+      <BackLink to={ref.current || "/"} />
       <Suspense fallback={<Loader />}>
-        <MovieDetailsInfo movie={movie} ref={ref} />
+        <MovieDetailsInfo movie={movie} />
         <Outlet />
       </Suspense>
     </Container>
