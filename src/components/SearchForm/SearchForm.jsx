@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import s from "./SearchForm.module.css";
 
 const SearchForm = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
     setQuery(e.target.value);
+    setSearchParams({ query: query });
   };
 
   const handleSubmit = (e) => {

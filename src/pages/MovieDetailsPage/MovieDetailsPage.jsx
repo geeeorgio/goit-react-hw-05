@@ -1,15 +1,21 @@
-import { Outlet, useParams } from "react-router-dom";
-import { useEffect, useState, Suspense } from "react";
+import { Outlet, useLocation, useParams } from "react-router-dom";
+import { useEffect, useState, Suspense, lazy, useRef } from "react";
 import { getMovieById } from "../../service/tmdbAPI";
 import Container from "../../components/Container/Container";
-import MovieDetailsInfo from "../../components/MovieDetailsInfo/MovieDetailsInfo";
-import BackLink from "../../components/BackLink/BackLink";
 import Loader from "../../components/Loader/Loader";
+import BackLink from "../../components/BackLink/BackLink";
+const MovieDetailsInfo = lazy(() =>
+  import("../../components/MovieDetailsInfo/MovieDetailsInfo")
+);
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
   const { movieId } = useParams();
+
+  const ref = useRef();
+
+  const location = useLocation();
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -28,9 +34,9 @@ const MovieDetailsPage = () => {
 
   return (
     <Container>
-      <BackLink />
-      {loading ? <Loader /> : <MovieDetailsInfo movie={movie} />}
+      <BackLink to={location.state || "/"} />
       <Suspense fallback={<Loader />}>
+        <MovieDetailsInfo movie={movie} ref={ref} />
         <Outlet />
       </Suspense>
     </Container>

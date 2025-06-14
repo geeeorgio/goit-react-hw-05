@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import s from "./BackLink.module.css";
 import { ArrowLeft } from "lucide-react";
 
 const BackLink = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
-    <button onClick={() => navigate(-1)} className={s.link}>
+    <Link to={location.state || "/"} className={s.link}>
       <ArrowLeft className={s.arrowIcon} />
-      Back
-    </button>
+      Go Back
+    </Link>
   );
 };
 
