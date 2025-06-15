@@ -1,12 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import s from "./BackLink.module.css";
 import { ArrowLeft } from "lucide-react";
 
-const BackLink = () => {
-  const location = useLocation();
-
+const BackLink = ({ to }) => {
   return (
-    <Link to={location.state || "/"} className={s.link}>
+    <Link to={to} className={s.link}>
       <ArrowLeft className={s.arrowIcon} />
       Go Back
     </Link>
